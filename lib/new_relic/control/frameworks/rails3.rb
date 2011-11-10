@@ -20,7 +20,9 @@ module NewRelic
         def root
           value = ::Rails.root.to_s
           if value.empty?
-            super
+            ActiveSupport::Deprecation.silence do
+              super
+            end
           else
             value
           end
